@@ -4,7 +4,7 @@ import Body from './components/Body';
 import Profile from './components/profile';
 import Login from './components/login';
 import { Provider } from 'react-redux';
-import appStore from './components/appStore';
+import appStore from './utils/appStore';
 function App() {
   const [count, setCount] = useState(0)
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
 import { useDispatch } from 'react-redux';
-import { addUser } from './userSlice';
+import { addUser } from '../utils/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../utils/constants';
 // Main App component to serve as the entry point for the React application.
 export default function App() {
   // State variables for email and password input fields.
@@ -14,11 +16,13 @@ export default function App() {
   // State to manage loading status, disabling the button during API calls.
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   /**
    * handleLogin function
    * Handles the login process by sending user credentials to the backend.
    */
   const handleLogin = async () => {
+    
     setIsLoading(true); // Set loading state to true
     setMessage('');      // Clear any previous messages
     setMessageType('info');
@@ -37,7 +41,7 @@ export default function App() {
       };
 
       // Direct Backend Login Call using axios
-      const response = await axios.post('http://localhost:7777/api/login', payload, {
+      const response = await axios.post(BASE_URL + 'login', payload, {
         withCredentials: true // Important for sending/receiving HTTP-only cookies
       });
 
@@ -52,7 +56,7 @@ export default function App() {
         setPassword('');
         dispatch(addUser(res.data));
         // Redirect to dashboard or home page
-        window.location.href = '/'; // Or your dashboard path
+        return navigate('/');
 
       } else {
         // This block might be less frequently hit with axios as it throws errors for non-2xx responses
