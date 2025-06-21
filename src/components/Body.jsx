@@ -2,15 +2,12 @@ import { Outlet } from "react-router-dom"
 import Navbar from "./NavBar"
 import Footer from "./Footer";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 import axios from "axios";
-import Home from "./Home";
 const Body = () =>{
     const { currentUser } = useSelector((state) => state.user);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     async function fetchUser() {
         if (currentUser !== null) return;
@@ -32,7 +29,6 @@ const Body = () =>{
     <div>
         <Navbar/>
         <Outlet/>  
-        <Home /> 
         <Footer />
     </div>
     );

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
 import Body from './components/Body';
 import Profile from './components/profile';
 import Login from './components/login';
@@ -9,6 +10,10 @@ import Products from './components/Products';
 import Register from './components/Register';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/cart';
+import Checkout from './components/checkout';
+import Thankyou from './components/Thankyou';
+import OrderHistory from './components/OrderHistory';
+import Contact from './components/Contact';
 function App() {
 
   return (
@@ -17,12 +22,17 @@ function App() {
       <BrowserRouter basename='/'>
       <Routes>
         <Route path="/" element ={<Body/>}>
+          <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" elememt={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/products" element={<Products />} /> 
           <Route path ="/register" element={<Register />} />
           <Route path="/product/:sku" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element= {<Checkout />}/>
+          <Route path="/thankyou" element = {<Thankyou />}/>
+          <Route path="/orders-history" element = {<OrderHistory />} />
+          <Route path="/contact" element = {<Contact/>} />
         </Route>
       </Routes>
       

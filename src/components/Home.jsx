@@ -105,38 +105,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Call to Action / Newsletter */}
-      <section className="py-16 bg-indigo-700 text-white text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-extrabold mb-6">Stay Connected</h2>
-          <p className="text-lg mb-8 opacity-90">
-            Join our newsletter for exclusive offers, farm updates, and healthy recipes.
-          </p>
-          <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-grow p-4 rounded-lg border-2 border-white bg-transparent text-white placeholder-gray-200 focus:outline-none focus:border-white focus:ring-2 focus:ring-white transition-all duration-200"
-            />
-            <button className="bg-white text-indigo-700 font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-10">
-        <div className="container mx-auto px-6 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} AgriFarm Store. All rights reserved.</p>
-          <div className="mt-4 space-x-4">
-            <a href="/privacy" className="hover:text-gray-300">Privacy Policy</a>
-            <a href="/terms" className="hover:text-gray-300">Terms of Service</a>
-            <a href="/contact" className="hover:text-gray-300">Contact Us</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
