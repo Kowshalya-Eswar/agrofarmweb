@@ -1,6 +1,15 @@
-import React from 'react';
 
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../utils/cartSlice';
+import { useNavigate } from 'react-router-dom';
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    navigate('/cart');
+  }
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       {/* Placeholder Image */}
@@ -25,12 +34,17 @@ const ProductCard = ({ product }) => {
           In Stock: <span className="font-semibold text-gray-800">{product.stock}</span>
         </div>
         <div className="flex justify-between items-center">
-          <button className="flex-1 mr-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm font-medium shadow-md">
+          <button onClick= {handleAddToCart} className="flex-1 mr-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm font-medium shadow-md">
             Add to Cart
           </button>
-          <button className="flex-1 ml-2 border border-indigo-600 text-indigo-600 py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors duration-200 text-sm font-medium">
+         {/* Link to Product Details Page */}
+          {/* This is the button you referred to. It correctly links to the /product/:sku route. */}
+          <Link
+            to={`/product/${product.sku}`} // Link to the new product details route
+            className="flex-1 ml-2 border border-indigo-600 text-indigo-600 py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors duration-200 text-sm font-medium text-center"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
