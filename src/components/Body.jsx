@@ -7,6 +7,7 @@ import { BASE_URL } from "../utils/constants";
 import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 import axios from "axios";
+import Home from "./Home";
 const Body = () =>{
     const { currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Body = () =>{
             dispatch(addUser(res.data.data));
         } catch (error) {
             if (error.status == 401) {
-                navigate("/login");
+                //navigate("/login");
             }
         }
     };
@@ -30,7 +31,8 @@ const Body = () =>{
     return (
     <div>
         <Navbar/>
-        <Outlet/>   
+        <Outlet/>  
+        <Home /> 
         <Footer />
     </div>
     );
