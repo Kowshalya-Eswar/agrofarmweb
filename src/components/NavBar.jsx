@@ -20,10 +20,12 @@ const Navbar = () =>{
     try {
       await axios.get(BASE_URL + 'logout', { withCredentials: true });
       dispatch(logoutUser()); // Dispatch Redux logout action
+      localStorage.setItem('cart', []);
       window.location.href = '/login'; // Redirect to login page after logout
     } catch (error) {
       console.error('Logout failed:', error);
       dispatch(logoutUser());
+      localStorage.setItem('cart', []);
       alert('Logout failed on server, but you have been logged out on client side. Please try again.');
     }
   };
