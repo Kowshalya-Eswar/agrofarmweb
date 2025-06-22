@@ -16,7 +16,7 @@ const Home = () => {
       setProductError(null);
       try {
         // Fetch products with a limit for featured display
-        const response = await axios.get(BASE_URL+'product?limit=4&sortBy=createdAt&order=desc', {
+        const response = await axios.get(BASE_URL + '/product?limit=4&sortBy=createdAt&order=desc', {
           withCredentials: true // If products API requires auth, otherwise remove
         });
         if (response.data.success) {

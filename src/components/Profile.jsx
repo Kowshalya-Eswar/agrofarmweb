@@ -51,7 +51,7 @@ const Profile = () => {
 
     try {
       // Send PATCH request to a new backend endpoint for profile updates
-      const response = await axios.patch(BASE_URL + 'user', updatedData, {
+      const response = await axios.patch(BASE_URL + '/user', updatedData, {
         withCredentials: true, // Send JWT cookie
       });
 

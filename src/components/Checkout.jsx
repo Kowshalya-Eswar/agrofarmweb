@@ -67,7 +67,7 @@ const Checkout = () => {
         qty: item.quantity
       }));
 
-      const response = await axios.post(BASE_URL+'orders', {
+      const response = await axios.post(BASE_URL + '/orders', {
         items: orderItems,
         address: address
       }, {

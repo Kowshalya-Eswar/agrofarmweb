@@ -12,7 +12,7 @@ const Body = () =>{
     async function fetchUser() {
         if (currentUser !== null) return;
         try {
-            const res = await axios.get(BASE_URL + 'profile',{
+            const res = await axios.get(BASE_URL + '/profile',{
                 withCredentials: true
             })
             dispatch(addUser(res.data.data));

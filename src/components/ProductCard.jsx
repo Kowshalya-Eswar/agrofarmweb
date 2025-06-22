@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../utils/cartSlice';
 import { useNavigate } from 'react-router-dom';
+import {DOMAIN_URL} from '../utils/constants';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -10,11 +11,17 @@ const ProductCard = ({ product }) => {
     dispatch(addToCart(product));
     navigate('/cart');
   }
+  let imageUrl = product.images.find(image => image.isMain).imageUrl;
+  if (imageUrl) {
+    imageUrl = DOMAIN_URL + imageUrl;
+  } else {
+    imageUrl = `https://placehold.co/400x300/F0F8FF/4682B4?text=${encodeURIComponent(product.productname)}`;
+  }
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       {/* Placeholder Image */}
       <img
-        src={`https://placehold.co/400x300/F0F8FF/4682B4?text=${encodeURIComponent(product.productname)}`}
+        src={imageUrl}
         alt={product.productname}
         onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300/E0E0E0/808080?text=No+Image'; }}
         className="w-full h-48 object-cover object-center"

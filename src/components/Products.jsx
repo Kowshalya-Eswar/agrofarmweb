@@ -20,7 +20,7 @@ const Products =() => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(BASE_URL+'product', {
+      const response = await axios.get(BASE_URL + '/product', {
         params: {
           page: currentPage,
           limit: itemsPerPage,

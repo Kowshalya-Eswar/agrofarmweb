@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { BASE_URL } from '../utils/constants';
+import { BASE_URL, DOMAIN_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../utils/cartSlice';
 const ProductDetails = () => {
@@ -9,9 +9,9 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     navigate('/cart');
@@ -22,11 +22,18 @@ const ProductDetails = () => {
       setError(null);
       try {
         // Fetch product details using the SKU from the URL
-        const response = await axios.get(BASE_URL+`product/${sku}`, {
+        const response = await axios.get(BASE_URL +`/product/${sku}`, {
           withCredentials: true // Assuming product details API requires authentication
         });
         if (response.data.success) {
-          setProduct(response.data.data);
+          const product_data = response.data.data;
+          setProduct(product_data);
+          let image_url = product_data.images.find(image => image.isMain).imageUrl;
+          if (image_url) {
+            setImageUrl(DOMAIN_URL + image_url);
+          } else {
+            setImageUrl(`https://placehold.co/400x300/F0F8FF/4682B4?text=${encodeURIComponent(product_data.productname)}`);
+          }
         } else {
           setError(response.data.message || 'Failed to fetch product details.');
           setProduct(null);
@@ -71,14 +78,13 @@ const ProductDetails = () => {
       </div>
     );
   }
-
   return (
     <div className="container mx-auto px-6 py-8 bg-gray-50 min-h-[calc(100vh-80px)]">
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col md:flex-row gap-8">
         {/* Product Image Section */}
         <div className="md:w-1/2 flex items-center justify-center">
           <img
-            src={`https://placehold.co/600x400/F0F8FF/4682B4?text=${encodeURIComponent(product.productname)}`}
+            src={imageUrl}
             alt={product.productname}
             onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/E0E0E0/808080?text=No+Image'; }}
             className="rounded-lg shadow-md max-h-96 object-contain"

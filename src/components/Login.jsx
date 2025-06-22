@@ -41,7 +41,7 @@ export default function App() {
       };
 
       // Direct Backend Login Call using axios
-      const response = await axios.post(BASE_URL + 'login', payload, {
+      const response = await axios.post(BASE_URL + '/login', payload, {
         withCredentials: true // Important for sending/receiving HTTP-only cookies
       });
 

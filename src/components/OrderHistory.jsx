@@ -23,7 +23,7 @@ const OrderHistory = () => {
       setError('');
       try {
         // Fetch orders for the current user from the backend
-        const response = await axios.get(BASE_URL + 'orders', {
+        const response = await axios.get(BASE_URL + '/orders', {
           withCredentials: true, // Send cookies (JWT token)
         });
 
