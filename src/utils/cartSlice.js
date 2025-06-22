@@ -40,8 +40,12 @@ const cartSlice = createSlice({
                 state.items.push({product: newItem, quantity: 1, subTotal: newItem.price})
             }
             state.totalQuantity++;
-            state.totalAmount = state.items.reduce((total, item) => total + item.subtotal, 0);
-             saveState(state);
+            const calculatedTotal = state.items.reduce((total, item) => {
+              return total + (item.subTotal || 0);
+            }, 0);
+
+            state.totalAmount = calculatedTotal;
+            saveState(state);
         },
         removeFromCart: (state, action) => {
             const skuToRemove = action.payload;

@@ -80,7 +80,7 @@ const Checkout = () => {
         dispatch(clearCart()); // Clear cart after successful order
         setTimeout(() => {
           navigate('/thankyou'); // Redirect to a hypothetical order history page
-        }, 2000);
+        }, 1000);
       } else {
         setMessage(response.data.message || 'Failed to place order. Please try again.');
         setMessageType('error');

@@ -103,9 +103,11 @@ const Cart = () => {
                 <span className="text-indigo-600">₹{totalAmount}</span>
               </div>
             </div>
-            <Link to ='/checkout' className="mt-8 w-full bg-green-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors duration-200 shadow-md transform hover:scale-105">
-              Proceed to Checkout
-            </Link>
+            <div className="flex mt-4">
+              <Link to ='/checkout' className="mt-8 w-full bg-green-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors duration-200 shadow-md transform hover:scale-105">
+                Proceed to Checkout
+              </Link>
+            </div>
           </div>
         </div>
       )}
