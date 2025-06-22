@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL, DOMAIN_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../utils/cartSlice';
+import { addToCart, clearCart } from '../utils/cartSlice';
 const ProductDetails = () => {
   const { sku } = useParams(); // Get the SKU from the URL parameters
   const [product, setProduct] = useState(null);
@@ -15,6 +15,11 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     navigate('/cart');
+  }
+  const handleBuyNow = () => {
+    dispatch(clearCart());
+    dispatch(addToCart(product));
+    navigate('/checkout');
   }
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -114,7 +119,7 @@ const ProductDetails = () => {
             <button onClick = {handleAddToCart} className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-md transform hover:scale-105">
               Add to Cart
             </button>
-            <button className="flex-1 border border-indigo-600 text-indigo-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
+            <button onClick = {handleBuyNow} className="flex-1 border border-indigo-600 text-indigo-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
               Buy Now
             </button>
           </div>

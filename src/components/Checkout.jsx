@@ -79,7 +79,7 @@ const Checkout = () => {
         setMessageType('success');
         dispatch(clearCart()); // Clear cart after successful order
         setTimeout(() => {
-          navigate('/thankyou'); // Redirect to a hypothetical order history page
+          navigate('/thankyou'); //redirect to thank you page
         }, 1000);
       } else {
         setMessage(response.data.message || 'Failed to place order. Please try again.');

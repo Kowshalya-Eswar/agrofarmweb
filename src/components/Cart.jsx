@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from '../utils/cartSlice';
 import { Link } from 'react-router-dom';
+import { DOMAIN_URL } from '../utils/constants';
 const Cart = () => {
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Cart = () => {
               {items.map((item) => (
                 <div key={item.product.sku} className="flex items-center border-b pb-4 last:border-b-0 last:pb-0">
                   <img
-                    src={`https://placehold.co/100x100/F0F8FF/4682B4?text=${encodeURIComponent(item.product.productname)}`}
+                    src={DOMAIN_URL +  item.product.images[0].imageUrl}
                     alt={item.product.productname}
                     className="w-24 h-24 object-cover rounded-lg mr-4 shadow-sm"
                   />
