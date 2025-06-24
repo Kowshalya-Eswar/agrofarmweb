@@ -2,8 +2,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Body from './components/Body';
-import Profile from './components/profile';
-import Login from './components/login';
+import Profile from './components/Profile';
+import Login from './components/Login';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import Products from './components/Products';
