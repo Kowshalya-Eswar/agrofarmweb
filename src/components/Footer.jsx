@@ -8,6 +8,7 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
           <Link to="/privacy" className="hover:text-gray-300 transition duration-200">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-gray-300 transition duration-200">Terms of Service</Link>
+          <Link to="/aboutus" className="hover:text-gray-300 transition duration-200">About Us</Link>
           <Link to="/contactus" className="hover:text-gray-300 transition duration-200">Contact Us</Link>
           <Link to="/cancel-refund" className="hover:text-gray-300 transition duration-200">Cancellation & Refund</Link>
           <Link to="/shipping" className="hover:text-gray-300 transition duration-200">Shipping & Delivery</Link>
