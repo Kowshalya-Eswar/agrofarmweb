@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 // The path '../components/ProductCard.jsx' is correct if HomePage.jsx is in src/pages/
 import ProductCard from '../components/ProductCard.jsx';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants.js';
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -47,12 +48,11 @@ const Home = () => {
           <p className="text-lg md:text-xl mb-10 opacity-90 animate-fadeInUp">
             Your trusted source for farm-fresh produce and healthy living.
           </p>
-          <a
-            href="/products"
+          <Link to="/products"
             className="inline-block bg-white text-green-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 animate-fadeInUp"
           >
             Shop Now
-          </a>
+          </Link>
         </div>
       </section>
 
