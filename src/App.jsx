@@ -14,6 +14,10 @@ import Checkout from './components/Checkout';
 import Thankyou from './components/Thankyou';
 import OrderHistory from './components/OrderHistory';
 import Contact from './components/Contact';
+import CancellationAndRefund from './components/Cancellation';
+import TermsAndConditions from './components/TC';
+import ShippingAndDelivery from './components/shipping';
+import PrivacyPolicy from './components/PrivacyPolicy';
 function App() {
 
   return (
@@ -32,7 +36,11 @@ function App() {
           <Route path="/checkout" element= {<Checkout />}/>
           <Route path="/thankyou" element = {<Thankyou />}/>
           <Route path="/orders-history" element = {<OrderHistory />} />
-          <Route path="/contact" element = {<Contact/>} />
+          <Route path="/contactus" element = {<Contact/>} />
+          <Route path="/cancel-refund" element = {<CancellationAndRefund/>} />
+          <Route path="/shipping" element = {<ShippingAndDelivery/>} />
+          <Route path="/terms" element ={<TermsAndConditions/>} />
+          <Route path="/privacy" element ={<PrivacyPolicy/>} />
         </Route>
       </Routes>
       

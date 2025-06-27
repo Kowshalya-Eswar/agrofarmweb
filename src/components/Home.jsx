@@ -90,7 +90,7 @@ const Home = () => {
           <div>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              At AgriFarm Store, we are passionate about connecting you directly with the freshest, highest-quality organic produce from local farms. We believe in sustainable practices, fair trade, and providing transparent access to healthy food for everyone.
+              At cocoFields Store, we are passionate about connecting you directly with the freshest, highest-quality organic produce from local farms. We believe in sustainable practices, fair trade, and providing transparent access to healthy food for everyone.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mt-4">
               Every purchase supports local farmers and helps build a healthier, more sustainable community.
