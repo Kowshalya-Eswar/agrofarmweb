@@ -16,7 +16,7 @@ import OrderHistory from './components/OrderHistory';
 import Contact from './components/Contact';
 import CancellationAndRefund from './components/Cancellation';
 import TermsAndConditions from './components/TC';
-import ShippingAndDelivery from './components/shipping';
+import ShippingAndDelivery from './components/ShippingDelivery';
 import PrivacyPolicy from './components/PrivacyPolicy';
 function App() {
 
