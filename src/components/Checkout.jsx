@@ -19,7 +19,7 @@ const Checkout = () => {
   // Redirect if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/login', { state: { from: '/checkout' } }); // Pass state to redirect back after login
+      navigate('/register', { state: { from: '/checkout' } }); // Pass state to redirect back after login
     }
   }, [isAuthenticated, navigate]);
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 // Main App component to serve as the entry point for the React application.
 export default function App() {
@@ -17,6 +17,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   /**
    * handleLogin function
    * Handles the login process by sending user credentials to the backend.
@@ -47,7 +48,8 @@ export default function App() {
 
       // Axios wraps the response in a 'data' property
       const res = response.data;
-
+      debugger;
+      const from = location.state?.from || '/';
       if (res.success) { // Check res.success from the backend response
         setMessage(res.message || 'Login successful!');
         setMessageType('success');
@@ -55,9 +57,9 @@ export default function App() {
         setEmail('');
         setPassword('');
         dispatch(addUser(res.data));
-        // Redirect to dashboard or home page
-        return navigate('/');
-
+        navigate(from, { replace: true }); // Redirect to the 'from' path
+                                           // 'replace: true' replaces the current history entry
+                                           // so the user can't go back to the login page easily
       } else {
         // This block might be less frequently hit with axios as it throws errors for non-2xx responses
         setMessage(res.message || 'Login failed. Please check your credentials.');
