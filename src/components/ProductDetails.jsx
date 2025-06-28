@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BASE_URL, DOMAIN_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addToCart, clearCart } from '../utils/cartSlice';
+import { Link } from 'react-router-dom';
 const ProductDetails = () => {
   const { sku } = useParams(); // Get the SKU from the URL parameters
   const [product, setProduct] = useState(null);
@@ -129,9 +130,9 @@ const ProductDetails = () => {
         </div>
       </div>
       <div className="mt-12 text-center">
-        <a href="/products" className="text-lg font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200">
+        <Link to="/products" className="text-lg font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200">
           &larr; Back to Products
-        </a>
+        </Link>
       </div>
     </div>
   );

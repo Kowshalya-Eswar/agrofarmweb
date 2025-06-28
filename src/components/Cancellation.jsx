@@ -1,10 +1,11 @@
 
+import { Link } from "react-router-dom";
 const CancellationAndRefund = () => {
   return (
     <div className="p-8 max-w-4xl mx-auto bg-white rounded-xl shadow-lg mt-8 font-inter">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Cancellation and Refund Policy</h1>
       <p className="mb-4 text-gray-700">
-        Thank you for shopping at <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>.
+        Thank you for shopping at <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>.
       </p>
       <p className="mb-4 text-gray-700">
         If, for any reason, You are not completely satisfied with a purchase We invite You to
@@ -23,11 +24,11 @@ const CancellationAndRefund = () => {
       </p>
       <h3 className="text-xl font-medium text-gray-700 mb-2">Definitions</h3>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>.</li>
+        <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>.</li>
         <li><strong>Goods</strong> refer to the items offered for sale on the Service.</li>
         <li><strong>Orders</strong> mean a request by You to purchase Goods from Us.</li>
         <li><strong>Service</strong> refers to the Website.</li>
-        <li><strong>Website</strong> refers to <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a>, accessible from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">www.cocoFields.in</a></li>
+        <li><strong>Website</strong> refers to <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link>, accessible from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">www.cocoFields.in</Link></li>
         <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
       </ul>
 
@@ -45,7 +46,7 @@ const CancellationAndRefund = () => {
         by means of a clear statement. You can inform us of your decision by:
       </p>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li>By visiting this page on our website: <a href="/contactus" className="text-indigo-600 hover:underline">Contact Us</a></li>
+        <li>By visiting this page on our website: <Link to="/contactus" className="text-indigo-600 hover:underline">Contact Us</Link></li>
       </ul>
       <p className="mb-4 text-gray-700">
         We will reimburse You no later than 14 days from the day on which We receive the
@@ -109,7 +110,7 @@ const CancellationAndRefund = () => {
         If you have any questions about our Returns and Refunds Policy, please contact us:
       </p>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li>By visiting the <a href="/contactus" className="text-indigo-600 hover:underline">Contact Us</a> on our website: </li>
+        <li>By visiting the <Link to="/contactus" className="text-indigo-600 hover:underline">Contact Us</Link> on our website: </li>
       </ul>
     </div>
   );

@@ -1,12 +1,11 @@
-import React from 'react';
-
+import { Link } from 'react-router-dom';
 const AboutUs = () => {
   return (
     <div className="p-8 max-w-4xl mx-auto bg-white rounded-xl shadow-lg mt-8 font-inter">
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">About Us - Welcome to cocoFields!</h1>
 
       <p className="mb-6 text-lg text-gray-700 leading-relaxed">
-        At <a href="/" className="text-indigo-600 hover:underline font-semibold">cocoFields</a>, we are passionate about bringing the pure goodness of coconuts directly from our farms to your home. We believe in transparency, sustainability, and providing you with the highest quality coconut products, harvested with care and respect for nature.
+        At <Link to="/" className="text-indigo-600 hover:underline font-semibold">cocoFields</Link>, we are passionate about bringing the pure goodness of coconuts directly from our farms to your home. We believe in transparency, sustainability, and providing you with the highest quality coconut products, harvested with care and respect for nature.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -45,7 +44,7 @@ const AboutUs = () => {
       <div className="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Knowledge Hub: Coconut Information & Articles</h2>
         <p className="mb-4 text-gray-700 leading-relaxed">
-          Beyond selling products, <a href="/" className="text-indigo-600 hover:underline font-semibold">cocoFields</a> is dedicated to being your go-to resource for all things coconut. We are constantly working to publish insightful articles, guides, and tips about the benefits, uses, and sustainable cultivation of coconuts. Our aim is to empower you with knowledge, helping you make informed choices and appreciate the incredible versatility of this tropical fruit. Stay tuned for our upcoming articles!
+          Beyond selling products, <Link to="/" className="text-indigo-600 hover:underline font-semibold">cocoFields</Link> is dedicated to being your go-to resource for all things coconut. We are constantly working to publish insightful articles, guides, and tips about the benefits, uses, and sustainable cultivation of coconuts. Our aim is to empower you with knowledge, helping you make informed choices and appreciate the incredible versatility of this tropical fruit. Stay tuned for our upcoming articles!
         </p>
         <p className="text-gray-700 italic">
           "From farm to your table, pure goodness in every drop."

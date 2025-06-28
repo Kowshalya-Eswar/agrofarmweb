@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // For programmatic navigation
-
+import { Link } from 'react-router-dom';
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -268,9 +268,9 @@ const Register = () => {
         )}
         <p className="mt-8 text-center text-gray-600">
           Already have an account?{' '}
-          <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
             Log in
-          </a>
+          </Link>
         </p>
       </div>
       {/* Custom styles for input fields */}

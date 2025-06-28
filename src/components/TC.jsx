@@ -1,22 +1,22 @@
-
+import { Link } from "react-router-dom";
 const TermsAndConditions = () => {
   return (
     <div className="p-8 max-w-4xl mx-auto bg-white rounded-xl shadow-lg mt-8 font-inter">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Terms and Conditions</h1>
       <p className="mb-4 text-gray-700">
-        Welcome to <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a>! These terms and conditions outline the rules and
-        regulations for the use of <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>'s Website, located at <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">www.cocoFields.in</a>.
+        Welcome to <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link>! These terms and conditions outline the rules and
+        regulations for the use of <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>'s Website, located at <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">www.cocoFields.in</Link>.
       </p>
       <p className="mb-4 text-gray-700">
         By accessing this website we assume you accept these terms and conditions. Do not
-        continue to use <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a> if you do not agree to take all of the terms and
+        continue to use <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link> if you do not agree to take all of the terms and
         conditions stated on this page.
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Cookies</h2>
       <p className="mb-4 text-gray-700">
-        We employ the use of cookies. By accessing <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a>, you agreed to use
-        cookies in agreement with the <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>'s Privacy Policy.
+        We employ the use of cookies. By accessing <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link>, you agreed to use
+        cookies in agreement with the <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>'s Privacy Policy.
       </p>
       <p className="mb-4 text-gray-700">
         Most interactive websites use cookies to let us retrieve the user’s details for each
@@ -27,17 +27,17 @@ const TermsAndConditions = () => {
 
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">License</h2>
       <p className="mb-4 text-gray-700">
-        Unless otherwise stated, <a href="/" className="text-indigo-600 hover:underline">cocoFields</a> and/or its licensors own the intellectual
-        property rights for all material on <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a>. All intellectual property
-        rights are reserved. You may access this from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a> for your own
+        Unless otherwise stated, <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link> and/or its licensors own the intellectual
+        property rights for all material on <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link>. All intellectual property
+        rights are reserved. You may access this from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link> for your own
         personal use subject to restrictions set in these terms and conditions.
       </p>
       <p className="mb-4 text-gray-700">You must not:</p>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li>Republish material from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a></li>
-        <li>Sell, rent or sub-license material from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a></li>
-        <li>Reproduce, duplicate or copy material from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a></li>
-        <li>Redistribute content from <a href="http://www.cocoFields.in" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</a></li>
+        <li>Republish material from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link></li>
+        <li>Sell, rent or sub-license material from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link></li>
+        <li>Reproduce, duplicate or copy material from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link></li>
+        <li>Redistribute content from <Link to="/" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">cocoFields</Link></li>
       </ul>
       <p className="mb-4 text-gray-700">
         This Agreement shall begin on the date hereof.
@@ -71,12 +71,12 @@ const TermsAndConditions = () => {
         We will approve link requests from these organizations if we decide that: (a) the
         link would not make us look unfavorably to ourselves or to our accredited businesses;
         (b) the organization does not have any negative records with us; (c) the benefit to
-        us from the visibility of the hyperlink compensates the absence of <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>;
+        us from the visibility of the hyperlink compensates the absence of <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>;
         and (d) the link is in the context of general resource information.
       </p>
       <p className="mb-4 text-gray-700">
         If you are one of the organizations listed in paragraph 2 above and are interested in
-        linking to our website, you must inform us by sending an e-mail to <a href="/contactus" className="text-indigo-600 hover:underline">Contact Us</a>.
+        linking to our website, you must inform us by sending an e-mail to <Link to="/contactus" className="text-indigo-600 hover:underline">Contact Us</Link>.
         Please include your name, your organization name, contact information as well as the URL
         of your site, a list of any URLs from which you intend to link to our Website, and a
         list of the URLs on our site to which you would like to link.
@@ -145,7 +145,7 @@ const TermsAndConditions = () => {
         If you have any questions about our Terms and Conditions, please contact us:
       </p>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li>By visiting the <a href="/contactus" className="text-indigo-600 hover:underline">Contact Us</a> on our website: </li>
+        <li>By visiting the <Link to="/contactus" className="text-indigo-600 hover:underline">Contact Us</Link> on our website: </li>
       </ul>
     </div>
   );

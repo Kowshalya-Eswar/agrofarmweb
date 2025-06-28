@@ -1,10 +1,10 @@
-
+import { Link } from "react-router-dom";
 const ShippingAndDelivery = () => {
   return (
     <div className="p-8 max-w-4xl mx-auto bg-white rounded-xl shadow-lg mt-8 font-inter">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Shipping and Delivery Policy</h1>
       <p className="mb-4 text-gray-700">
-        Thank you for visiting and shopping at <a href="/" className="text-indigo-600 hover:underline">cocoFields</a>. Following are the terms and
+        Thank you for visiting and shopping at <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link>. Following are the terms and
         conditions that constitute our Shipping and Delivery Policy.
       </p>
 
@@ -35,7 +35,7 @@ const ShippingAndDelivery = () => {
 
       <h3 className="text-xl font-medium text-gray-700 mb-2">Shipment to P.O. boxes or APO/FPO addresses</h3>
       <p className="mb-4 text-gray-700">
-        <a href="/" className="text-indigo-600 hover:underline">cocoFields</a> ships to addresses within India only. We do not
+        <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link> ships to addresses within India only. We do not
         ship to P.O. boxes or APO/FPO addresses.
       </p>
 
@@ -47,13 +47,13 @@ const ShippingAndDelivery = () => {
 
       <h3 className="text-xl font-medium text-gray-700 mb-2">Customs, Duties and Taxes</h3>
       <p className="mb-4 text-gray-700">
-        <a href="/" className="text-indigo-600 hover:underline">cocoFields</a> is not responsible for any customs and taxes applied to Your Order.
+        <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link> is not responsible for any customs and taxes applied to Your Order.
         All fees imposed during or after shipping are the responsibility of the customer (tariffs, taxes, etc.).
       </p>
 
       <h3 className="text-xl font-medium text-gray-700 mb-2">Damages</h3>
       <p className="mb-4 text-gray-700">
-        <a href="/" className="text-indigo-600 hover:underline">cocoFields</a> is not liable for any products damaged or lost during shipping. If
+        <Link to="/" className="text-indigo-600 hover:underline">cocoFields</Link> is not liable for any products damaged or lost during shipping. If
         You received Your Order damaged, please contact the shipment carrier to file a claim.
       </p>
       <p className="mb-4 text-gray-700">
@@ -70,7 +70,7 @@ const ShippingAndDelivery = () => {
         If you have any questions about our Shipping and Delivery Policy, please contact us:
       </p>
       <ul className="list-disc list-inside mb-4 text-gray-700">
-        <li>By visiting the <a href="/contactus" className="text-indigo-600 hover:underline">Contact Us</a> on our website: </li>
+        <li>By visiting the <Link to="/contactus" className="text-indigo-600 hover:underline">Contact Us</Link> on our website: </li>
       </ul>
     </div>
   );
