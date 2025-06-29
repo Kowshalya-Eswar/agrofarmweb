@@ -10,7 +10,7 @@ import Products from './components/Products';
 import Register from './components/Register';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
-import Checkout from './components/Checkout';
+import Checkout from './components/PaymentProcess';
 import Thankyou from './components/Thankyou';
 import OrderHistory from './components/OrderHistory';
 import Contact from './components/Contact';

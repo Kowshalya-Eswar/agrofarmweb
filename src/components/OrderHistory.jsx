@@ -102,7 +102,13 @@ const OrderHistory = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">Order Details</h3>
                   <p className="text-gray-700"><strong>Total Amount:</strong> ₹{order.totalAmount.toFixed(2)}</p>
-                  <p className="text-gray-700"><strong>Shipping Address:</strong> {order.address}</p>
+                  <p className="text-gray-700">
+                  <strong>Shipping Address:</strong> <br />
+                  {order.shippingAddress.street},<br />
+                  {order.shippingAddress.landmark && `${order.shippingAddress.landmark},`}<br /> {/* Optional landmark */}
+                  {order.shippingAddress.city}, {order.shippingAddress.state}, {order.shippingAddress.pincode},<br />
+                  {order.shippingAddress.country}
+                </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">Items</h3>

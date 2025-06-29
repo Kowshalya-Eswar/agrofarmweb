@@ -48,7 +48,6 @@ export default function App() {
 
       // Axios wraps the response in a 'data' property
       const res = response.data;
-      debugger;
       const from = location.state?.from || '/';
       if (res.success) { // Check res.success from the backend response
         setMessage(res.message || 'Login successful!');
