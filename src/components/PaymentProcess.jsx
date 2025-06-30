@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { clearCart } from '../utils/cartSlice'; 
 import { BASE_URL } from '../utils/constants';
-
+import { useRazorpay } from 'react-razorpay';
 const Checkout = () => {
+  const { Razorpay } = useRazorpay();
   const { isAuthenticated, currentUser } = useSelector((state) => state.user);
   const { items, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -94,7 +95,7 @@ const Checkout = () => {
       
       if (response.data.success) {
         const order = response.data.data;
-        const { amountPaid, key, order_id, notes } = order;
+        const { amountPaid, key, orderId:order_id, notes } = order;
 
         const options = {
           key,
@@ -107,12 +108,11 @@ const Checkout = () => {
             name: notes.firstName + " " + notes.lastName,
           },
           theme: {
-            color: "#f37254"
+            color: "#99ff99"
           }
 
         }
-        debugger;
-        const rzp = new window.RazorPay(options);
+        const rzp = new Razorpay(options);
         rzp.open();
         setMessage('Order placed successfully! Thank you for your purchase.');
         setMessageType('success');
