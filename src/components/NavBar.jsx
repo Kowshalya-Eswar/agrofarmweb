@@ -37,7 +37,7 @@ const Navbar = () =>{
          {/* Testing Mode Banner */}
          
       <div className="bg-yellow-100 text-yellow-800 text-center py-2 text-sm font-medium border-b border-yellow-300">
-      ⚠️ This is a <strong>testing environment</strong>. Please note that orders placed here will not be processed.
+      ⚠️ This website is in <strong>testing mode</strong>. Please note that orders placed here will not be processed.
     </div>
       <nav className="bg-gray-800 h-24 px-8 shadow-lg sticky top-0 z-50">
           <div className="container mx-auto h-full flex justify-between items-center">
