@@ -33,17 +33,23 @@ const Navbar = () =>{
     setIsSettingsDropdownOpen(!isSettingsDropdownOpen);
   };
   return (
-    <nav className="bg-gray-800 p-4 shadow-lg sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo/Brand Name */}
-        <Link to="/" className="text-white text-2xl font-bold flex items-center gap-2">
-          <svg className="h-8 w-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-          </svg>
-          cocoFields
-        </Link>
-
-        {/* Navigation Links */} 
+    <>
+         {/* Testing Mode Banner */}
+         
+      <div className="bg-yellow-100 text-yellow-800 text-center py-2 text-sm font-medium border-b border-yellow-300">
+      ⚠️ This is a <strong>testing environment</strong>. Please note that orders placed here will not be processed.
+    </div>
+      <nav className="bg-gray-800 h-24 px-8 shadow-lg sticky top-0 z-50">
+          <div className="container mx-auto h-full flex justify-between items-center">
+            {/* Logo */}
+            <Link to="/" className="h-full flex items-center">
+              <img
+                src="/images/logo.png" // Use your high-res transparent logo
+                alt="Cocofields Logo"
+                className="h-full w-auto max-w-[300px] object-contain" // Bigger height & width
+              />
+            </Link>
+        {/* Navigation Links */}
         <div className="flex items-center space-x-6">
           <Link to="/products" className="text-gray-300 hover:text-white transition-colors duration-200">
             Products
@@ -62,10 +68,9 @@ const Navbar = () =>{
 
           {isAuthenticated ? (
             <div className="relative flex items-center gap-2 text-white">
-              {/* Settings Icon */}
-                <span className="text-sm font-medium">
-                  {currentUser?.userName || currentUser?.email || "User"}
-                </span>
+              <span className="text-sm font-medium">
+                {currentUser?.userName || currentUser?.email || "User"}
+              </span>
 
               <button
                 onClick={toggleSettingsDropdown}
@@ -73,7 +78,6 @@ const Navbar = () =>{
                 aria-haspopup="true"
                 aria-expanded={isSettingsDropdownOpen ? "true" : "false"}
               >
-                {/* Cog/Settings SVG Icon (Lucide React equivalent) */}
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.827 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.827 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.827-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.827-3.31 2.37-2.37.527.272 1.053.429 1.573.429.539 0 1.077-.16 1.573-.429z"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -108,18 +112,19 @@ const Navbar = () =>{
               )}
             </div>
           ) : (
-              <div className="flex items-center gap-4">
-                <Link to="/login" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Login
-                </Link>
-                <Link to="/register" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <div className="flex items-center gap-4">
+              <Link to="/login" className="text-gray-300 hover:text-white transition-colors duration-200">
+                Login
+              </Link>
+              <Link to="/register" className="text-gray-300 hover:text-white transition-colors duration-200">
                 Register
-              </Link> 
+              </Link>
             </div>
           )}
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
