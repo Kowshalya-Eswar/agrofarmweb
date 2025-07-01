@@ -30,7 +30,7 @@ const cartSlice = createSlice({
     name : "cart",
     initialState,
     reducers : {
-        addToCart: (state, action) =>{
+        addToCart: (state, action) => {
             const newItem  = action.payload;
             const existingItem = state.items.find(item => item.product.sku === newItem.sku);
             if (existingItem) {
@@ -52,7 +52,7 @@ const cartSlice = createSlice({
             const itemToRemove = state.items.find(item => item.product.sku === skuToRemove);
             if(itemToRemove) {
                 state.totalQuantity = itemToRemove.quantity;
-                state.totalAmount -= itemToRemove.subtotal;
+                state.totalAmount -= itemToRemove.subTotal;
                 state.items = state.items.filter(item => item.product.sku !== skuToRemove);
             }
              saveState(state);
@@ -62,7 +62,7 @@ const cartSlice = createSlice({
             const existingItem = state.items.find(item =>item.product.sku ==  skuToIncrease);
             if (existingItem) {
                 existingItem.quantity++;
-                existingItem.subtotal = existingItem.product.price * existingItem.quantity;
+                existingItem.subTotal = existingItem.product.price * existingItem.quantity;
                 state.totalQuantity++;
                 state.totalAmount += existingItem.product.price;
             }
@@ -73,7 +73,7 @@ const cartSlice = createSlice({
             const existingItem = state.items.find(item => item.product.sku === skuToDecrease);
             if (existingItem && existingItem.quantity > 1) {
                 existingItem.quantity--;
-                existingItem.subtotal = existingItem.product.price * existingItem.quantity;
+                existingItem.subTotal = existingItem.product.price * existingItem.quantity;
                 state.totalQuantity--;
                 state.totalAmount -= existingItem.product.price;
             } else if (existingItem && existingItem.quantity === 1) {

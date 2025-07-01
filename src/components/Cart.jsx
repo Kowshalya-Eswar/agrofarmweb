@@ -54,7 +54,7 @@ const Cart = () => {
                   <div className="flex-grow">
                     <h3 className="text-lg font-semibold text-gray-900">{item.product.productname}</h3>
                     <p className="text-gray-600">₹{item.product.price.toFixed(2)} / {item.product.unit}</p>
-                    <p className="text-gray-700 font-medium">Subtotal: ₹{(item.subtotal || 0).toFixed(2)}</p>
+                    <p className="text-gray-700 font-medium">Subtotal: ₹{(item.subTotal || 0).toFixed(2)}</p>
                   </div>
                   <div className="flex items-center space-x-3 ml-4">
                     <button
