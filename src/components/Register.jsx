@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // For programmatic navigation
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../utils/constants';
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -17,7 +18,7 @@ const Register = () => {
   const [messageType, setMessageType] = useState('info');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -63,7 +64,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:7777/api/user/register', formData, {
+      const response = await axios.post(BASE_URL +'/user/register', formData, {
         withCredentials: true // If your backend sets cookies on registration as well
       });
 
