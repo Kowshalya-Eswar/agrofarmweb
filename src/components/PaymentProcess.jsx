@@ -109,17 +109,23 @@ const Checkout = () => {
           },
           theme: {
             color: "#99ff99"
+          },
+          handler: function() {
+            setMessage('Order placed successfully! Thank you for your purchase.');
+            setMessageType('success');
+            dispatch(clearCart()); // Clear cart after successful order
+            setTimeout(() => {
+            navigate('/thankyou'); //redirect to thank you page
+            }, 1000);
           }
-
         }
         const rzp = new Razorpay(options);
         rzp.open();
-        setMessage('Order placed successfully! Thank you for your purchase.');
-        setMessageType('success');
-        dispatch(clearCart()); // Clear cart after successful order
-        setTimeout(() => {
-          navigate('/thankyou'); //redirect to thank you page
-        }, 1000);
+       /* rzp.on('payment.failed', function (response){
+            setMessage(response.data.message || 'Failed to process payment. Please try again.');
+            setMessageType('error');
+        });*/
+        
       } else {
         setMessage(response.data.message || 'Failed to place order. Please try again.');
         setMessageType('error');
