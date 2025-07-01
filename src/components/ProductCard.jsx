@@ -38,12 +38,23 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         <div className="text-gray-500 text-sm mb-4">
-          In Stock: <span className="font-semibold text-gray-800">{product.stock}</span>
+          {product.stock > 0 ? (
+            <span>
+              In Stock: <span className="font-semibold text-gray-800">{product.stock}</span>
+            </span>
+          ) : (
+            <span>Out of Stock</span>
+          )}
+         
         </div>
         <div className="flex justify-between items-center">
-          <button onClick= {handleAddToCart} className="flex-1 mr-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm font-medium shadow-md">
-            Add to Cart
-          </button>
+           {product.stock > 0 ? (
+            <span>
+              <button onClick= {handleAddToCart} className="flex-1 mr-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm font-medium shadow-md">
+                Add to Cart
+              </button>
+              </span> ) :
+          (<span></span>) }
          {/* Link to Product Details Page */}
           {/* This is the button you referred to. It correctly links to the /product/:sku route. */}
           <Link

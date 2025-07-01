@@ -116,14 +116,16 @@ const ProductDetails = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <button onClick = {handleAddToCart} className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-md transform hover:scale-105">
-              Add to Cart
-            </button>
-            <button onClick = {handleBuyNow} className="flex-1 border border-indigo-600 text-indigo-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
-              Buy Now
-            </button>
-          </div>
+           {product.stock > 0 ? ( <span>
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <button onClick = {handleAddToCart} className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-md transform hover:scale-105">
+                  Add to Cart
+                </button>
+                <button onClick = {handleBuyNow} className="flex-1 border border-indigo-600 text-indigo-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
+                  Buy Now
+                </button>
+              </div>
+              </span> ) : (<></>)}
           <div className="mt-4 text-sm text-gray-500">
             SKU: <span className="font-mono text-gray-700">{product.sku}</span>
           </div>
