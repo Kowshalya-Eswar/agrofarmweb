@@ -11,8 +11,16 @@ const Cart = () => {
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const handleRemove = (sku) => {
-    dispatch(removeFromCart(sku));
+  const handleRemove = async(product, quantity) => {
+    const restorePayload = [{
+      productId: product._id,
+      quantity: quantity,
+    }];
+    await axios.post(`${BASE_URL}/cart/restore-stock`, {
+      items: restorePayload,
+    });
+    dispatch(removeFromCart(product.sku));
+
   };
 
   const handleIncrease = async(product) => {
@@ -92,7 +100,7 @@ const Cart = () => {
                       +
                     </button>
                     <button
-                      onClick={() => handleRemove(item.product.sku)}
+                      onClick={() => handleRemove(item.product, item.quantity)}
                       className="ml-4 text-red-600 hover:text-red-800 transition-colors duration-200"
                       aria-label={`Remove ${item.product.productname}`}
                     >
