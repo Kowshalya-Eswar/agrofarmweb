@@ -3,25 +3,38 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL, DOMAIN_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
-import { addToCart, clearCart } from '../utils/cartSlice';
+import { addToCart } from '../utils/cartSlice';
+import { syncCartWithStock } from '../utils/cartActions';
 import { Link } from 'react-router-dom';
+
 const ProductDetails = () => {
   const { sku } = useParams(); // Get the SKU from the URL parameters
   const [product, setProduct] = useState(null);
+  const [stock, setStock] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(syncCartWithStock(product, addToCart));
     navigate('/cart');
   }
   const handleBuyNow = () => {
-    dispatch(clearCart());
-    dispatch(addToCart(product));
+    dispatch(syncCartWithStock(product, addToCart));
     navigate('/checkout');
   }
+  const fetchStockFromRedis = async (product_id) => {
+    try {
+      const stockCount = await axios.get(`${BASE_URL}/stock/${product_id}`);
+      if (stockCount.data.stock !== undefined) {
+        setStock(stockCount.data.stock)
+      }
+    }
+  catch (err) {
+    console.error("failed to fetch stock",err);
+  }
+}
   useEffect(() => {
     const fetchProductDetails = async () => {
       setLoading(true);
@@ -33,13 +46,17 @@ const ProductDetails = () => {
         });
         if (response.data.success) {
           const product_data = response.data.data;
+
           setProduct(product_data);
+          
           let image_url = product_data.images.find(image => image.isMain).imageUrl;
           if (image_url) {
             setImageUrl(DOMAIN_URL + image_url);
           } else {
             setImageUrl(`https://placehold.co/400x300/F0F8FF/4682B4?text=${encodeURIComponent(product_data.productname)}`);
           }
+          
+         await fetchStockFromRedis(product_data._id);
         } else {
           setError(response.data.message || 'Failed to fetch product details.');
           setProduct(null);
@@ -111,12 +128,17 @@ const ProductDetails = () => {
               </span>
             </div>
             <div className="text-gray-600 text-lg mb-6">
-              In Stock: <span className="font-semibold text-gray-800">{product.stock}</span>
+             {stock > 0 ? (<span>
+              In Stock: <span className="font-semibold text-gray-800">{stock}</span>
+             </span>) : (
+              <span>Out of Stock</span>
+             )}
+              
             </div>
           </div>
 
           {/* Action Buttons */}
-           {product.stock > 0 ? ( <span>
+           {stock > 0 ? ( <span>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
                 <button onClick = {handleAddToCart} className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-md transform hover:scale-105">
                   Add to Cart

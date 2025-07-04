@@ -1,14 +1,36 @@
 
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../utils/cartSlice';
+import { syncCartWithStock } from '../utils/cartActions';
 import { useNavigate } from 'react-router-dom';
-import {DOMAIN_URL} from '../utils/constants';
+import { useEffect, useState } from 'react';
+import { addToCart } from '../utils/cartSlice';
+import {DOMAIN_URL, BASE_URL} from '../utils/constants';
+import axios from 'axios';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [stock, setStock] = useState(0);
+  useEffect(() => {
+  const fetchStock = async () => {
+    try {
+      const stockCount = await axios.get(`${BASE_URL}/stock/${product._id}`);
+      if (stockCount.data.stock !== undefined) {
+        setStock(stockCount.data.stock);
+      }
+    } catch (err) {
+      console.error("Failed to fetch stock", err);
+    }
+  };
+
+  if (product?._id) {
+    fetchStock();
+  }
+}, [product?._id]);  // Only run when product._id is available
+
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(syncCartWithStock(product, addToCart));
     navigate('/cart');
   }
   let imageUrl = product.images.find(image => image.isMain).imageUrl;
@@ -38,9 +60,9 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         <div className="text-gray-500 text-sm mb-4">
-          {product.stock > 0 ? (
+          {stock > 0 ? (
             <span>
-              In Stock: <span className="font-semibold text-gray-800">{product.stock}</span>
+              In Stock: <span className="font-semibold text-gray-800">{stock}</span>
             </span>
           ) : (
             <span>Out of Stock</span>
@@ -48,7 +70,7 @@ const ProductCard = ({ product }) => {
          
         </div>
         <div className="flex justify-between items-center">
-           {product.stock > 0 ? (
+           {stock > 0 ? (
             <span>
               <button onClick= {handleAddToCart} className="flex-1 mr-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm font-medium shadow-md">
                 Add to Cart

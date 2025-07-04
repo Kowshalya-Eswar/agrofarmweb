@@ -1,8 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
+
 import { removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from '../utils/cartSlice';
 import { Link } from 'react-router-dom';
-import { DOMAIN_URL } from '../utils/constants';
+import { DOMAIN_URL, BASE_URL } from '../utils/constants';
+import { syncCartWithStock, removeFromCartWithStock } from '../utils/cartActions';
+import { useState } from 'react';
+import axios from 'axios';
 const Cart = () => {
+  const [error, setError] = useState(null);
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -10,22 +15,38 @@ const Cart = () => {
     dispatch(removeFromCart(sku));
   };
 
-  const handleIncrease = (sku) => {
-    dispatch(increaseQuantity(sku));
+  const handleIncrease = async(product) => {
+    const actionResult = await dispatch(syncCartWithStock(product, increaseQuantity));
+    if (actionResult != 'success') {
+        setError(actionResult)
+    } else {
+      setError(null)
+    }
   };
 
-  const handleDecrease = (sku) => {
-    dispatch(decreaseQuantity(sku));
+  const handleDecrease = (product) => {
+    dispatch(removeFromCartWithStock(product));
   };
 
-  const handleClearCart = () => {
+  const handleClearCart = async() => {
     if (window.confirm("Are you sure you want to clear your entire cart?")) {
+      // Create array of productId and quantity
+      const restorePayload = items.map(item => ({
+        productId: item.product._id,
+        quantity: item.quantity,
+      }));
+
+      // Call backend to restore stock
+      await axios.post(`${BASE_URL}/cart/restore-stock`, {
+        items: restorePayload,
+      });
       dispatch(clearCart());
     }
   };
 
   return (
     <div className="container mx-auto px-6 py-8 bg-gray-50 min-h-[calc(100vh-80px)]">
+      {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
       <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-10">Your Shopping Cart</h1>
 
       {items.length === 0 ? (
@@ -58,14 +79,14 @@ const Cart = () => {
                   </div>
                   <div className="flex items-center space-x-3 ml-4">
                     <button
-                      onClick={() => handleDecrease(item.product.sku)}
+                      onClick={() => handleDecrease(item.product)}
                       className="bg-gray-200 text-gray-800 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors duration-200"
                     >
                       -
                     </button>
                     <span className="font-semibold text-lg">{item.quantity}</span>
                     <button
-                      onClick={() => handleIncrease(item.product.sku)}
+                      onClick={() => handleIncrease(item.product)}
                       className="bg-gray-200 text-gray-800 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors duration-200"
                     >
                       +
