@@ -46,9 +46,9 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto px-6 py-8 bg-gray-50 min-h-[calc(100vh-80px)]">
-      {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+      
       <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-10">Your Shopping Cart</h1>
-
+      {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
       {items.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-xl text-gray-600 mb-6">Your cart is empty.</p>
