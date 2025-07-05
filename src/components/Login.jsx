@@ -119,6 +119,15 @@ export default function App() {
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLoading}
             />
+            <div className="text-right mt-2">
+            <button
+              type="button"
+              onClick={() => navigate('/forgot-password')}
+              className="text-sm text-indigo-600 hover:text-indigo-800 focus:outline-none"
+            >
+              Forgot password?
+            </button>
+          </div>
           </div>
         </div>
 
