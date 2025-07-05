@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-
+import getOrCreateCartId from '../utils/cardUtils';
 import { removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from '../utils/cartSlice';
 import { Link } from 'react-router-dom';
 import { DOMAIN_URL, BASE_URL } from '../utils/constants';
@@ -7,6 +7,7 @@ import { syncCartWithStock, removeFromCartWithStock } from '../utils/cartActions
 import { useState } from 'react';
 import axios from 'axios';
 const Cart = () => {
+  const cartId = getOrCreateCartId();
   const [error, setError] = useState(null);
   const { items, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Cart = () => {
     }];
     await axios.post(`${BASE_URL}/cart/restore-stock`, {
       items: restorePayload,
+      cartId
     });
     dispatch(removeFromCart(product.sku));
 
@@ -47,6 +49,7 @@ const Cart = () => {
       // Call backend to restore stock
       await axios.post(`${BASE_URL}/cart/restore-stock`, {
         items: restorePayload,
+        cartId
       });
       dispatch(clearCart());
     }

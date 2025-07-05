@@ -1,7 +1,9 @@
 import { decreaseQuantity as removeFromCartAction } from './cartSlice';
 import axios from 'axios';
 import { BASE_URL } from './constants';
+import getOrCreateCartId from './cardUtils';
 
+const cartId = getOrCreateCartId();
 /**
  * Common function to sync cart action with Redis stock
  * @param {Object} product - The product object (must have _id and sku)
@@ -9,9 +11,11 @@ import { BASE_URL } from './constants';
  */
 export const syncCartWithStock = (product, reduxAction) => async (dispatch) => {
   try {
+    
     await axios.post(`${BASE_URL}/cart/add`, {
       productId: product._id,
       quantity: 1,
+      cartId
     })
 
     dispatch(reduxAction(product));
@@ -27,6 +31,7 @@ export const removeFromCartWithStock = (product) => async (dispatch) => {
     await axios.post(`${BASE_URL}/cart/remove`, {
       productId: product._id,
       quantity: 1,
+      cartId
     });
 
     dispatch(removeFromCartAction(product));
