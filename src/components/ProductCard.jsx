@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
     dispatch(syncCartWithStock(product, addToCart));
     navigate('/cart');
   }
-  let imageUrl = product.images.find(image => image.isMain).imageUrl;
+  let imageUrl = product.images?.find(image => image.isMain)?.imageUrl || null
   if (imageUrl) {
     imageUrl = DOMAIN_URL + imageUrl;
   } else {

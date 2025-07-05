@@ -49,7 +49,7 @@ const ProductDetails = () => {
 
           setProduct(product_data);
           
-          let image_url = product_data.images.find(image => image.isMain).imageUrl;
+          let image_url = product_data.images?.find(image => image.isMain)?.imageUrl || null
           if (image_url) {
             setImageUrl(DOMAIN_URL + image_url);
           } else {

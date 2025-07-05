@@ -79,7 +79,7 @@ const Cart = () => {
               {items.map((item) => (
                 <div key={item.product.sku} className="flex items-center border-b pb-4 last:border-b-0 last:pb-0">
                   <img
-                    src={DOMAIN_URL +  item.product.images[0].imageUrl}
+                    src={DOMAIN_URL +  item.product.images?.find(image => image.isMain)?.imageUrl || null}
                     alt={item.product.productname}
                     className="w-24 h-24 object-cover rounded-lg mr-4 shadow-sm"
                   />
