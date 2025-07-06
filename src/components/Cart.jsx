@@ -21,7 +21,7 @@ const Cart = () => {
       items: restorePayload,
       cartId
     });
-    dispatch(removeFromCart(product.sku));
+    dispatch(removeFromCart(product._id));
 
   };
 
@@ -77,7 +77,7 @@ const Cart = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Items in Cart ({totalQuantity})</h2>
             <div className="space-y-6">
               {items.map((item) => (
-                <div key={item.product.sku} className="flex items-center border-b pb-4 last:border-b-0 last:pb-0">
+                <div key={item.product._id} className="flex items-center border-b pb-4 last:border-b-0 last:pb-0">
                   <img
                     src={DOMAIN_URL +  item.product.images?.find(image => image.isMain)?.imageUrl || null}
                     alt={item.product.productname}

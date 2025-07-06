@@ -6,7 +6,7 @@ import getOrCreateCartId from './cardUtils';
 const cartId = getOrCreateCartId();
 /**
  * Common function to sync cart action with Redis stock
- * @param {Object} product - The product object (must have _id and sku)
+ * @param {Object} product - The product object (must have _id)
  * @param {Function} reduxAction - Redux action to dispatch
  */
 export const syncCartWithStock = (product, reduxAction) => async (dispatch) => {

@@ -60,7 +60,7 @@ Visit the app at: http://localhost:3000
 
 /products – Browse all products
 
-/product/:sku – View product details
+/product/:id – View product details
 
 /cart – Manage your selected items
 

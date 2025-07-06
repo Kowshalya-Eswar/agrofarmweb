@@ -12,7 +12,7 @@ const OrderHistory = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!isAuthenticated || !currentUser?.userId) {
+      if (!isAuthenticated || !currentUser?._id) {
         // Not authenticated or user ID not available, stop loading
         setIsLoading(false);
         setError('You must be logged in to view your order history.');
@@ -41,7 +41,7 @@ const OrderHistory = () => {
     };
 
     fetchOrders();
-  }, [isAuthenticated, currentUser?.userId]); // Re-fetch if auth status or user ID changes
+  }, [isAuthenticated, currentUser?._id]); // Re-fetch if auth status or user ID changes
 
   if (isLoading) {
     return (
@@ -115,7 +115,7 @@ const OrderHistory = () => {
                   <ul className="list-disc list-inside text-gray-700 space-y-1">
                     {order.items.map((item, index) => (
                       <li key={index}>
-                        {item.productNameAtOrder} (SKU: {item.sku}) - Qty: {item.qty} @ ₹{item.priceAtOrder.toFixed(2)}
+                        {item.productNameAtOrder} (id: {item.product_id}) - Qty: {item.qty} @ ₹{item.priceAtOrder.toFixed(2)}
                       </li>
                     ))}
                   </ul>

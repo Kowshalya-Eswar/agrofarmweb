@@ -78,9 +78,9 @@ const ProductCard = ({ product }) => {
               </span> ) :
           (<span></span>) }
          {/* Link to Product Details Page */}
-          {/* This is the button you referred to. It correctly links to the /product/:sku route. */}
+          {/* This is the button you referred to. It correctly links to the /product/:id route. */}
           <Link
-            to={`/product/${product.sku}`} // Link to the new product details route
+            to={`/product/${product._id}`} // Link to the new product details route
             className="flex-1 ml-2 border border-indigo-600 text-indigo-600 py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors duration-200 text-sm font-medium text-center"
           >
             View Details

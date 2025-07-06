@@ -8,7 +8,7 @@ import { syncCartWithStock } from '../utils/cartActions';
 import { Link } from 'react-router-dom';
 
 const ProductDetails = () => {
-  const { sku } = useParams(); // Get the SKU from the URL parameters
+  const { id } = useParams(); // Get the product_id from the URL parameters
   const [product, setProduct] = useState(null);
   const [stock, setStock] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -40,8 +40,8 @@ const ProductDetails = () => {
       setLoading(true);
       setError(null);
       try {
-        // Fetch product details using the SKU from the URL
-        const response = await axios.get(BASE_URL +`/product/${sku}`, {
+        // Fetch product details using the product_id from the URL
+        const response = await axios.get(BASE_URL +`/product/${id}`, {
           withCredentials: true // Assuming product details API requires authentication
         });
         if (response.data.success) {
@@ -70,13 +70,13 @@ const ProductDetails = () => {
       }
     };
 
-    if (sku) {
+    if (id) {
       fetchProductDetails();
     } else {
       setLoading(false);
-      setError('Product SKU is missing from the URL.');
+      setError('Product id is missing from the URL.');
     }
-  }, [sku]); // Re-fetch if SKU changes in the URL
+  }, [id]); // Re-fetch if id changes in the URL
 
   if (loading) {
     return (
@@ -149,7 +149,7 @@ const ProductDetails = () => {
               </div>
               </span> ) : (<></>)}
           <div className="mt-4 text-sm text-gray-500">
-            SKU: <span className="font-mono text-gray-700">{product.sku}</span>
+            Product Id: <span className="font-mono text-gray-700">{product._id}</span>
           </div>
         </div>
       </div>

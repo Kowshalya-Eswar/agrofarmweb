@@ -32,7 +32,7 @@ const cartSlice = createSlice({
     reducers : {
         addToCart: (state, action) => {
             const newItem  = action.payload;
-            const existingItem = state.items.find(item => item.product.sku === newItem.sku);
+            const existingItem = state.items.find(item => item.product._id === newItem.product_id);
             if (existingItem) {
                 existingItem.quantity++;
                 existingItem.subTotal = existingItem.product.price * existingItem.quantity;
@@ -48,18 +48,18 @@ const cartSlice = createSlice({
             saveState(state);
         },
         removeFromCart: (state, action) => {
-            const skuToRemove = action.payload;
-            const itemToRemove = state.items.find(item => item.product.sku === skuToRemove);
+            const idToRemove = action.payload;
+            const itemToRemove = state.items.find(item => item.product._id === idToRemove);
             if(itemToRemove) {
                 state.totalQuantity = itemToRemove.quantity;
                 state.totalAmount -= itemToRemove.subTotal;
-                state.items = state.items.filter(item => item.product.sku !== skuToRemove);
+                state.items = state.items.filter(item => item.product._id !== idToRemove);
             }
              saveState(state);
         }, 
         increaseQuantity: (state, action) => {
-            const skuToIncrease = action.payload.sku;
-            const existingItem = state.items.find(item =>item.product.sku ==  skuToIncrease);
+            const idToIncrease = action.payload.id;
+            const existingItem = state.items.find(item =>item.product._id ==  idToIncrease);
             if (existingItem) {
                 existingItem.quantity++;
                 existingItem.subTotal = existingItem.product.price * existingItem.quantity;
@@ -69,8 +69,8 @@ const cartSlice = createSlice({
              saveState(state);
         },
         decreaseQuantity: (state, action) => {
-            const skuToDecrease = action.payload.sku;
-            const existingItem = state.items.find(item => item.product.sku === skuToDecrease);
+            const idToDecrease = action.payload.id;
+            const existingItem = state.items.find(item => item.product._id === idToDecrease);
             if (existingItem && existingItem.quantity > 1) {
                 existingItem.quantity--;
                 existingItem.subTotal = existingItem.product.price * existingItem.quantity;
@@ -80,7 +80,7 @@ const cartSlice = createSlice({
                 // If quantity becomes 0, remove the item
                 state.totalQuantity--;
                 state.totalAmount -= existingItem.product.price;
-                state.items = state.items.filter(item => item.product.sku !== skuToDecrease);
+                state.items = state.items.filter(item => item.product._id !== idToDecrease);
             }
              saveState(state);
         },

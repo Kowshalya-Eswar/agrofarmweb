@@ -82,7 +82,7 @@ const Checkout = () => {
 
     try {
       const orderItems = items.map(item => ({
-        sku: item.product.sku,
+        product_id: item.product._id,
         qty: item.quantity
       }));
 
@@ -164,7 +164,7 @@ const Checkout = () => {
                         <h2 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h2>
                         <ul className="space-y-4 mb-6">
                             {items.map((item) => (
-                                <li key={item.product.sku} className="flex justify-between items-center text-gray-700 border-b pb-2 last:border-b-0 last:pb-0">
+                                <li key={item.product._id} className="flex justify-between items-center text-gray-700 border-b pb-2 last:border-b-0 last:pb-0">
                                     <span className="font-medium">{item.product.productname} (x{item.quantity})</span>
                                     <span>₹{(item.product.price * item.quantity).toFixed(2)}</span>
                                 </li>
