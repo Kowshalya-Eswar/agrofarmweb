@@ -19,6 +19,7 @@ const Navbar = () =>{
   const handleLogout = async () => {
     try {
       await axios.get(BASE_URL + '/logout', { withCredentials: true });
+      localStorage.setItem('isAuthenticated',0);
       dispatch(logoutUser()); // Dispatch Redux logout action
       localStorage.setItem('cart', []);
       window.location.href = '/login'; // Redirect to login page after logout

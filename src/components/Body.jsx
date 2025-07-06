@@ -7,15 +7,15 @@ import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 import axios from "axios";
 const Body = () =>{
-    const { currentUser } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     async function fetchUser() {
-        if (currentUser !== null) return;
+        if (localStorage.getItem('isAuthenticated') == 0) return;
         try {
             const res = await axios.get(BASE_URL + '/profile',{
                 withCredentials: true
             })
-            if (res.data.status) {
+            if (res.status) {
+                localStorage.setItem('isAuthenticated', 1);
                 dispatch(addUser(res.data.data));
             }
         } catch (error) {

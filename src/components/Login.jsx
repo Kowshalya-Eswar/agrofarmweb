@@ -56,6 +56,7 @@ export default function App() {
         setEmail('');
         setPassword('');
         dispatch(addUser(res.data));
+        localStorage.setItem('isAuthenticated', 1);
         navigate(from, { replace: true }); // Redirect to the 'from' path
                                            // 'replace: true' replaces the current history entry
                                            // so the user can't go back to the login page easily
