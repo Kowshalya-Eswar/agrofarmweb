@@ -113,10 +113,10 @@ const Checkout = () => {
           theme: {
             color: "#99ff99"
           },
-          handler: async function() {
+          handler: function() {
             setMessage('Order placed successfully! Thank you for your purchase.');
             setMessageType('success');
-            await axios.post(`${BASE_URL}/cart/clear-all-items`, {
+            axios.post(`${BASE_URL}/cart/clear-all-items`, {
              cartId
             });
             dispatch(clearCart()); // Clear cart after successful order
