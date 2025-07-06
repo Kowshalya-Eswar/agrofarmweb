@@ -5,7 +5,9 @@ import axios from 'axios';
 import { clearCart } from '../utils/cartSlice'; 
 import { BASE_URL } from '../utils/constants';
 import { useRazorpay } from 'react-razorpay';
+import getOrCreateCartId from '../utils/cardUtils';
 const Checkout = () => {
+  const cartId = getOrCreateCartId();
   const { Razorpay } = useRazorpay();
   const { isAuthenticated, currentUser } = useSelector((state) => state.user);
   const { items, totalAmount } = useSelector((state) => state.cart);
@@ -106,13 +108,17 @@ const Checkout = () => {
           order_id,
           prefill: {
             name: notes.firstName + " " + notes.lastName,
+            email: notes.email
           },
           theme: {
             color: "#99ff99"
           },
-          handler: function() {
+          handler: async function() {
             setMessage('Order placed successfully! Thank you for your purchase.');
             setMessageType('success');
+            await axios.post(`${BASE_URL}/cart/clear-all-items`, {
+             cartId
+            });
             dispatch(clearCart()); // Clear cart after successful order
             setTimeout(() => {
             navigate('/thankyou'); //redirect to thank you page
